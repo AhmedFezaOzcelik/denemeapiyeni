@@ -81,11 +81,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca\\Enoca\\Enoca.csproj",
+      "projectUniqueName": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya\\Enoca\\Enoca.csproj",
       "projectName": "Enoca",
-      "projectPath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca\\Enoca\\Enoca.csproj",
+      "projectPath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya\\Enoca\\Enoca.csproj",
       "packagesPath": "C:\\Users\\Feza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca\\Enoca\\obj\\",
+      "outputPath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya\\Enoca\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

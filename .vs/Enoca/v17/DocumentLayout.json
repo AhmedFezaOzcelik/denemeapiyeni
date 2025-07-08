@@ -1,7 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|c:\\users\\feza\\documents\\myprojects\\enoca - kopya\\enoca\\models\\pokemon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|solutionrelative:enoca\\models\\pokemon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Pokemon.cs",
+              "DocumentMoniker": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya\\Enoca\\Models\\Pokemon.cs",
+              "RelativeDocumentMoniker": "Enoca\\Models\\Pokemon.cs",
+              "ToolTip": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya\\Enoca\\Models\\Pokemon.cs",
+              "RelativeToolTip": "Enoca\\Models\\Pokemon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T07:30:17.497Z",
+              "EditorCaption": ""
             }
           ]
         }

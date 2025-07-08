@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fJZDrU35YzQ=",
+  "dgSpecHash": "5d+ZI4LAkJo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca\\Enoca\\Enoca.csproj",
+  "projectFilePath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya\\Enoca\\Enoca.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Feza\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.6\\microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",
     "C:\\Users\\Feza\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
