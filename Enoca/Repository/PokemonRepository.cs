@@ -44,5 +44,10 @@ namespace Enoca.Repository
         {
             return _context.Pokemons.Any(p => p.Id == pokeId);
         }
+        public void AddPokemon(Pokemon pokemon)
+        {
+            _context.Pokemons.Add(pokemon);
+            _context.SaveChanges();
+        }
     }
 }

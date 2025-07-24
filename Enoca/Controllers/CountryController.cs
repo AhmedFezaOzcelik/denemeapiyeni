@@ -9,27 +9,23 @@ namespace Enoca.Controllers
 {
     [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     [ApiController]
-    public class CountryController: Controller
+    public class CountryController : ControllerBase
     {
-        private readonly ICountryRepository _countryRepository;
-        private readonly IMapper _mapper;
+        private readonly ICountryRepository _countryRepository; // Repository referansı
+        private readonly IMapper _mapper; // AutoMapper referansı
 
-        public CountryController(ICountryRepository countryRepository ,IMapper mapper)
+        public CountryController(ICountryRepository countryRepository, IMapper mapper)
         {
-            _countryRepository = countryRepository;
-            _mapper = mapper;
+            _countryRepository = countryRepository; // Repository'i constructor ile alır
+            _mapper = mapper; // Mapper'ı constructor ile alır
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Enoca.Models.Country>))]
-        public IActionResult GetCategories()
+        [ProducesResponseType(200, Type = typeof(IEnumerable<CountryDto>))]
+        public IActionResult GetCountries()
         {
-            var countries = _mapper.Map<List<CountryDto>>(_countryRepository.GetCountries());
-            if (!ModelState.IsValid)
-
-                return BadRequest(ModelState);
-            return Ok(countries);
-
+            var countries = _mapper.Map<List<CountryDto>>(_countryRepository.GetCountries()); // Tüm ülkeleri DTO'ya çevirir
+            return Ok(countries); // Sonucu döner
         }
 
         [HttpGet("{countryId}")]
@@ -61,5 +57,31 @@ namespace Enoca.Controllers
             return Ok(country);
         }
 
+        [HttpPost]
+        [ProducesResponseType(201, Type = typeof(CountryDto))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(409)]
+
+        public IActionResult CreateCountry([FromBody] CountryDto countryCreate)
+        {
+            if (countryCreate == null)
+                return BadRequest();
+            var countries = _countryRepository.GetCountries();
+            if (countries.Any(c => c.Name.Trim().ToLower() == countryCreate.Name.Trim().ToLower()))
+                return Conflict("Bu isimde bir Ülke var zaten.");
+
+            
+            var country = _mapper.Map<Country>(countryCreate);
+
+            
+            _countryRepository.AddCountry(country);
+
+            
+            var createdCountry = _mapper.Map<CountryDto>(country);
+            return CreatedAtAction(nameof(GetCountry), new { countryId = createdCountry.Id }, createdCountry);
+
+
+
+        }
     }
 }

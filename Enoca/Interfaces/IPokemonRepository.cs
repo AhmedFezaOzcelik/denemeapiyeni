@@ -10,5 +10,6 @@ namespace Enoca.Interfaces
         decimal GetPokemonRating(int pokeId);
 
         bool PokemonExists(int pokeId);
+        void AddPokemon(Pokemon pokemon);
     }
 }

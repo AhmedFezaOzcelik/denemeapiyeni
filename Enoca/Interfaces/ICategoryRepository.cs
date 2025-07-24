@@ -9,5 +9,9 @@ namespace Enoca.Interfaces
         ICollection<Pokemon> GetPokemonByCategories(int categoryId);
 
         bool CategoryExists(int categoryId);
+        void AddCategory(Category category);
     }
-}
+
+    
+        
+ }

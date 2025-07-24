@@ -31,5 +31,10 @@ namespace Enoca.Repository
             return _context.Pokemon_Categories.Where(e=> e.Category.Id == categoryId).Select(e => e.Pokemon).ToList();
 
         }
+        public void AddCategory(Category category) 
+        {
+            _context.Categories.Add(category);
+            _context.SaveChanges();
+        }
     }
 }

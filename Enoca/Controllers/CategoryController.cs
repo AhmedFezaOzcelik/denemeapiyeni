@@ -60,5 +60,37 @@ namespace Enoca.Controllers
             return Ok(pokemons);
         }
 
+        //Bu metot HTTP post isteklerini karşılar.
+        [HttpPost]
+        //Başarılı ekleme durumunda 201 Created ve CategoryDto tipinde veri döner.
+        [ProducesResponseType(201, Type = typeof(CategoryDto))]
+        //Hatalı istek durumunda 400 bad request döner.
+        [ProducesResponseType(400)]
+        //Aynı isimde katagori varsa 409 conflict döner.
+        [ProducesResponseType(409)]
+        public IActionResult CreateCategory([FromBody] CategoryDto categorydto)
+        {
+            //Gönderilen veri boşsa hata döndürür.
+            if (categorydto == null)
+                return BadRequest();
+
+            //Aynı isimde kategori olup olmadığını kontrol eder.
+            var categories = _categoryRepository.GetCategories();
+            if (categories.Any(c => c.Name.Trim().ToLower() == categorydto.Name.Trim().ToLower()))
+                return Conflict("Bu isimde bir kategori var zaten.");
+
+            //Dto dan Category modeline dönüştürür.
+            var category = _mapper.Map<Category>(categorydto);
+
+            //Veritabanına ekler.
+            _categoryRepository.AddCategory(category);
+
+            //Eklenen veriyi dto ya çevirip döndürür.
+            var createdCategory = _mapper.Map<CategoryDto>(category);
+            return CreatedAtAction(nameof(GetCategory), new { categoryId = createdCategory.Id }, createdCategory);  
+        }
+
+
+
     }
 }

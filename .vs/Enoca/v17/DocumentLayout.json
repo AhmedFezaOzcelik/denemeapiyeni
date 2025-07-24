@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|c:\\users\\feza\\documents\\myprojects\\enoca - kopya 2\\enoca\\controllers\\countrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|solutionrelative:enoca\\controllers\\countrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|c:\\users\\feza\\documents\\myprojects\\enoca - kopya 2\\enoca\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|solutionrelative:enoca\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|c:\\users\\feza\\documents\\myprojects\\enoca - kopya 2\\enoca\\dto\\reviewerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|solutionrelative:enoca\\dto\\reviewerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|c:\\users\\feza\\documents\\myprojects\\enoca - kopya 2\\enoca\\controllers\\reviewercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|solutionrelative:enoca\\controllers\\reviewercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|c:\\users\\feza\\documents\\myprojects\\enoca - kopya 2\\enoca\\helper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|solutionrelative:enoca\\helper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4CBEA8C5-E68F-4FB3-A053-5B853FDCE023}|Enoca\\Enoca.csproj|c:\\users\\feza\\documents\\myprojects\\enoca - kopya 2\\enoca\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,62 +29,19 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 327,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Program.cs",
-              "RelativeDocumentMoniker": "Enoca\\Program.cs",
-              "ToolTip": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Program.cs",
-              "RelativeToolTip": "Enoca\\Program.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAuwBAAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T07:33:00.351Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CountryController.cs",
-              "DocumentMoniker": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Controllers\\CountryController.cs",
-              "RelativeDocumentMoniker": "Enoca\\Controllers\\CountryController.cs",
-              "ToolTip": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Controllers\\CountryController.cs",
-              "RelativeToolTip": "Enoca\\Controllers\\CountryController.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAIAwwBoAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T07:07:21.102Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "Enoca\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "Enoca\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAYwCIAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T08:14:13.184Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedHeight": 45,
+          "DockedHeight": 341,
           "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 31,
+          "SelectedChildIndex": 3,
+          "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
@@ -88,6 +53,69 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Program.cs",
+              "RelativeDocumentMoniker": "Enoca\\Program.cs",
+              "ToolTip": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Program.cs",
+              "RelativeToolTip": "Enoca\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T08:54:17.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Helper\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "Enoca\\Helper\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Helper\\MappingProfile.cs",
+              "RelativeToolTip": "Enoca\\Helper\\MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T08:54:08.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReviewerDto.cs",
+              "DocumentMoniker": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Dto\\ReviewerDto.cs",
+              "RelativeDocumentMoniker": "Enoca\\Dto\\ReviewerDto.cs",
+              "ToolTip": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Dto\\ReviewerDto.cs",
+              "RelativeToolTip": "Enoca\\Dto\\ReviewerDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T08:38:54.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ReviewerController.cs",
+              "DocumentMoniker": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Controllers\\ReviewerController.cs",
+              "RelativeDocumentMoniker": "Enoca\\Controllers\\ReviewerController.cs",
+              "ToolTip": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Controllers\\ReviewerController.cs",
+              "RelativeToolTip": "Enoca\\Controllers\\ReviewerController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowDMAAAByAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T08:18:17.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Enoca\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "Enoca\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwCIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T07:28:16.611Z"
             }
           ]
         }
