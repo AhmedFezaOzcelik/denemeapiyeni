@@ -4,6 +4,7 @@ using Enoca.Dto;
 using Enoca.Interfaces;
 using Enoca.Models;
 using Enoca.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace Enoca.Controllers
 {
     [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PokemonController : Controller
     {
         private readonly IPokemonRepository _pokemonrepository;

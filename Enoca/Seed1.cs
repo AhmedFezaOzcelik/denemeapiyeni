@@ -15,6 +15,18 @@ namespace Enoca
         }
         public void SeedDataContext()
         {
+            
+            // Eğer Roles tablosunda hiç veri yoksa, temel rolleri ekle.
+            if (!dataContext.Roles.Any())
+            {
+                var roles = new List<RoleModel>
+                {
+                    new RoleModel { Name = "Admin" }, // Id'si 1 olacak
+                    new RoleModel { Name = "User" }   // Id'si 2 olacak
+                };
+                dataContext.Roles.AddRange(roles);
+                dataContext.SaveChanges();
+            }
             if (!dataContext.Pokemon_Owners.Any())
             {
                 var pokemonOwners = new List<Pokemon_Owner>()

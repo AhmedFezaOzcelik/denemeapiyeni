@@ -191,6 +191,53 @@ namespace Enoca.Migrations
                     b.ToTable("Reviewers");
                 });
 
+            modelBuilder.Entity("Enoca.Models.RoleModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("Enoca.Models.UserModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("longblob");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("longblob");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("Enoca.Models.Owner", b =>
                 {
                     b.HasOne("Enoca.Models.Country", "Country")
@@ -259,6 +306,17 @@ namespace Enoca.Migrations
                     b.Navigation("Reviewer");
                 });
 
+            modelBuilder.Entity("Enoca.Models.UserModel", b =>
+                {
+                    b.HasOne("Enoca.Models.RoleModel", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("Enoca.Models.Category", b =>
                 {
                     b.Navigation("Pokemon_Categories");
@@ -286,6 +344,11 @@ namespace Enoca.Migrations
             modelBuilder.Entity("Enoca.Models.Reviewer", b =>
                 {
                     b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("Enoca.Models.RoleModel", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

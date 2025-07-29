@@ -17,6 +17,10 @@ namespace Enoca.Helper
             CreateMap<Owner, OwnerDto>();
             CreateMap<Review, ReviewDto>();
             CreateMap<Reviewer, ReviewerDto>();
+            CreateMap<RoleModel, RoleDto>();
+            //User dan user dto ya maplerken ,Role nesenesinin Name ini RoleName a ata.
+            CreateMap<UserModel, UserDto>()
+                .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.Role.Name));
 
         }
     }

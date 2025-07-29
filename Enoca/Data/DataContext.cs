@@ -28,6 +28,8 @@ namespace Enoca.Data
         public DbSet<Reviewer> Reviewers { get; set; }
         public DbSet<Pokemon_Owner> Pokemon_Owners { get; set; }
         public DbSet<Pokemon_Category> Pokemon_Categories { get; set; }
+        public DbSet<RoleModel> Roles { get; set; }
+        public DbSet<UserModel> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
