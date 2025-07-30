@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Enoca")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c44699c6ff8373f44c8f0a873efe3efa2f288eda")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e18bb71c5f3f235857cbd9ce29d440facbfeb2f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Enoca")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Enoca")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

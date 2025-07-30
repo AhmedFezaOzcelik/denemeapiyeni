@@ -3,11 +3,13 @@ using Enoca.Dto;
 using Enoca.Interfaces;
 using Enoca.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Enoca.Controllers
 {
     [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     [ApiController]
+    
     public class OwnerController:Controller
     {
         private readonly IOwnerRepository _ownerrepository;

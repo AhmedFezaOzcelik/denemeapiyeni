@@ -78,6 +78,10 @@ namespace Enoca.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.Username),
+                //Bu jetonun sahibinin rolü user.role..name dir 
+                //Bu,Authorization için kullanılacak en önemli bilgi 
+                //UserRepository de .Include() kullandığımız için user.Role.Name artık dolu gelecek.
+                new Claim(ClaimTypes.Role, user.Role.Name),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(

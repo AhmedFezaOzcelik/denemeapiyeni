@@ -61,9 +61,12 @@ namespace Enoca.Controllers
             return Ok(rating);
         }
 
+        //Sadece Admin ve Manager rolündekilerin erişebileceği endpoint
         
         [HttpPost]
-        
+
+        [Authorize(Roles = "Admin,Manager")]
+
         [ProducesResponseType(201, Type = typeof(PokemonDto))]
         
         [ProducesResponseType(400)]

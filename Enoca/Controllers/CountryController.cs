@@ -4,11 +4,13 @@ using Enoca.Interfaces;
 using Enoca.Models;
 using Enoca.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Enoca.Controllers
 {
     [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CountryController : ControllerBase
     {
         private readonly ICountryRepository _countryRepository; // Repository referansı
@@ -58,6 +60,7 @@ namespace Enoca.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Manager")]
         [ProducesResponseType(201, Type = typeof(CountryDto))]
         [ProducesResponseType(400)]
         [ProducesResponseType(409)]

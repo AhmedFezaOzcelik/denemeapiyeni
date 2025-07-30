@@ -1,14 +1,17 @@
 ﻿using AutoMapper;
 using Enoca.Dto;
 using Enoca.Interfaces;
-using Enoca.Repository;
-using Microsoft.AspNetCore.Mvc;
 using Enoca.Models;
+using Enoca.Repository;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Enoca.Controllers
 {
     [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class CategoryController:Controller
     {
         private readonly ICategoryRepository _categoryRepository;
@@ -62,6 +65,7 @@ namespace Enoca.Controllers
 
         //Bu metot HTTP post isteklerini karşılar.
         [HttpPost]
+        [Authorize(Roles = "Admin,Manager")]
         //Başarılı ekleme durumunda 201 Created ve CategoryDto tipinde veri döner.
         [ProducesResponseType(201, Type = typeof(CategoryDto))]
         //Hatalı istek durumunda 400 bad request döner.
