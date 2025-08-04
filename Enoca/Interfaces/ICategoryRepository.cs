@@ -10,6 +10,17 @@ namespace Enoca.Interfaces
 
         bool CategoryExists(int categoryId);
         void AddCategory(Category category);
+
+        bool CategoryExistsByName(string Name);
+
+        bool UpdateCategory(Category category);
+
+        bool DeleteCategory(Category category);
+
+        bool Save();
+
+
+
     }
 
     

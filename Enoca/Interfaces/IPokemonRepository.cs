@@ -11,5 +11,12 @@ namespace Enoca.Interfaces
 
         bool PokemonExists(int pokeId);
         void AddPokemon(Pokemon pokemon);
+
+        bool PokemonExistsByName(string Name);
+        bool UpdatePokemon(Pokemon pokemon);
+
+        bool DeletePokemon(Pokemon pokemon);
+
+        bool Save();
     }
 }

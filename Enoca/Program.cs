@@ -3,51 +3,74 @@ using Enoca.Data;
 using Enoca.Interfaces;
 using Enoca.Repository;
 using Microsoft.EntityFrameworkCore;
-//JWT kimlik doğrulamasını kullamnak için gerekli sınıfları içerir.
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-//Jetonları ve anahtarları yönetmek için gerekli sınıfları içerir.
 using Microsoft.IdentityModel.Tokens;
-//Metin (string) ve byte dizileri arasında dönüşüm yapmak için  gerekli sınıfları içerir.
 using System.Text;
 using Microsoft.OpenApi.Models;
+using FluentValidation.AspNetCore; // Doğru using
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers()
-  .AddJsonOptions(options =>
-  {
-      options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-  });
-
 // --- DÜZELTİLMİŞ BÖLÜM ---
-//Kimlik doğrulama servisini projemize ekliyoruz.
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    //Jwt Bearer şemasını kullanarak kimlik doğrulama işlemlerini yapılandırıyoruz.
-    .AddJwtBearer(options =>
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
     {
-        //jeton doğrulama parametrelerini belirliyoruz.
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            //Gelen jetonun imzasının,bizim gizli anahtarlarımızla doğrulanmasını zorunlu hale getiriyoruz.
-            ValidateIssuerSigningKey = true,
-
-            //Gizli anahtarımızı belirtiyoruz. (Yazım hatası düzeltildi)
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-                builder.Configuration.GetSection("AppSettings:Token").Value!)),
-
-            //Jetonu kimin oluşturduğunu (Issuer) doğrulamayı kapatıyoruz.
-            ValidateIssuer = false,
-
-            //Jetonun kimin için oluşturulduğunu (Audience) doğrulamayı kapatıyoruz.
-            ValidateAudience = false
-        };
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+    })
+    // Fluent Validation'ı AddControllers'a zincirleyerek ekliyoruz.
+    .AddFluentValidation(options =>
+    {
+        // Projedeki tüm validator'ları otomatik olarak bulup kaydediyoruz.
+        options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
     });
 // --- DÜZELTME BİTTİ ---
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                builder.Configuration.GetSection("AppSettings:Token").Value!)),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<Enoca.Seed>();
+
+// --- BİRLEŞTİRİLMİŞ SWAGGERGEN ---
+// AddSwaggerGen tek bir yerde, tüm ayarları içerecek şekilde çağrılmalı.
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "oauth2"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
+// --- BİRLEŞTİRME BİTTİ ---
+
+builder.Services.AddTransient<Seed>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -56,34 +79,6 @@ builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IReviewerRepository, ReviewerRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddSwaggerGen(options =>
-{
-    //Swagger a bir güvenlik tanımı ekliyoruz.
-    //Bu authorize butonunu ve jeton giriş alanını oluşturur.
-    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-    {
-        Description = "Standard Authorization header using the Bearer scheme (\"bearer{token}\")",
-        In = ParameterLocation.Header,
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey
-    });
-    //Swagger a endpointlere istek gönderirken bu güvenlik şemasını kullanmasını söylüyoruz.
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-{
-    {
-        new OpenApiSecurityScheme
-        {
-            Reference = new OpenApiReference
-            {
-                Type = ReferenceType.SecurityScheme,
-                Id = "oauth2"
-            }
-        },
-        new string[] {}
-    }
-});
-});
-
 
 builder.Services.AddCors(options =>
 {
@@ -93,7 +88,6 @@ builder.Services.AddCors(options =>
                         .AllowAnyHeader());
 });
 
-// Burada DataContext kullanıyoruz!
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseMySql(
@@ -127,12 +121,7 @@ void SeedData(IHost app)
 }
 
 app.UseHttpsRedirection();
-
-//Gelen isteklerde kimlik doğrulama işlemlerini yapılmasını sağlar.
 app.UseAuthentication();
-
-//Kimliği doğrulanmış kullanıcının yetkilerini kontrol eder.
-app.UseAuthorization(); // Fazladan olan ikinci satır silindi.
-
+app.UseAuthorization();
 app.MapControllers();
 app.Run();

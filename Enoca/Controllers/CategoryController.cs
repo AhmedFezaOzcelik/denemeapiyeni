@@ -5,6 +5,7 @@ using Enoca.Models;
 using Enoca.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Enoca.Controllers
 {
@@ -93,6 +94,74 @@ namespace Enoca.Controllers
             var createdCategory = _mapper.Map<CategoryDto>(category);
             return CreatedAtAction(nameof(GetCategory), new { categoryId = createdCategory.Id }, createdCategory);  
         }
+
+        [HttpPut("{categoryId}")]
+        [Authorize(Roles = "Admin,Manager")]
+        //Swagger için olası cevap durumu kodlarını belirliyoruz.
+        [ProducesResponseType(204)] //Başarılı içerik dönmüyor
+        [ProducesResponseType(400)] //Hatalı istek
+        [ProducesResponseType(404)] //Kaynak bulunamadı
+
+        public IActionResult UpdateCategory(int categoryId, [FromBody] CategoryDto updatedcategory)
+        {
+            //Fluent validation kontrolü 
+            //Gelen updatedCategory verisinin , CategoryDtoValidator daki kurallara uyup uymadığını kontrol eder.
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            //2.Kayıt Mevcut mu kontrolü 
+            //Güncellenmek istenen kategori veritabanında var olup olmadığını kontrol eder.
+            if (!_categoryRepository.CategoryExists(categoryId))
+                return NotFound("Güncellenmek istenen kategori bulunamadı.");
+
+            //Önce güncellenecek olan kategoriyi veritabanından alıyoruz
+            var categoryToUpdate = _categoryRepository.GetCategory(categoryId);
+
+            //AutoMapper ile , gelen DTO daki verileri mevcut nesnenin üzerine yazıyoruz 
+            _mapper.Map(updatedcategory, categoryToUpdate);
+
+            //Repository üzerinden güncelleme işlemini yapıyoruz
+            if (!_categoryRepository.UpdateCategory(categoryToUpdate))
+            {
+                //Eğer kaydetme başarısız ise bir sunucu hatası döndürüyoruz
+                ModelState.AddModelError("", "Güncelleme sırasında bir hata oluştu ");
+                return StatusCode(500, ModelState);
+            }
+
+
+            return NoContent(); //Başarılı güncelleme sonrası 204 No Content döndürüyoruz
+
+
+        }
+        [HttpDelete("{categoryId}")]
+        [Authorize  (Roles ="Admin")]
+        [ProducesResponseType(204)] //Başarılı ve içerik dönmüyor.
+        [ProducesResponseType(400)] //Hatalı istek
+        [ProducesResponseType(404)] //Kaynak bulunamadı
+
+        public IActionResult DeleteCategory(int categoryId)
+        {
+            //silinmek istenen kategorinin veritabanında var olup olmadığını kontrol et.
+            if(!_categoryRepository.CategoryExists(categoryId))
+                return NotFound("Silinmek istenen kategori bulunamadı.");
+            //SİLME İŞLEMİ
+            var categoryToDelete = _categoryRepository.GetCategory(categoryId);
+
+            //Repository üzerinden silme işlemini gerçekleştiriyoruz.
+            if(!_categoryRepository.DeleteCategory(categoryToDelete))
+            {
+                //Eğer kaydetme işlemi başarısız olursa 
+                //Sunucu hatası code 500 dödürüyoruz
+                ModelState.AddModelError("", "Silme işlemi sırasında bir hata oluştu.");
+                return StatusCode(500, ModelState);
+            }
+            //işlem başarılı olursa 204 No context durum kodunu döndürüyoruz
+            //Bu kod işlem başarılı oldu sana döndürecek bişeyim yok demektir.
+
+            return NoContent();
+        } 
+        
+        
+
 
 
 

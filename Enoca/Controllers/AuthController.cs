@@ -27,10 +27,36 @@ namespace Enoca.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] AuthDto authDto)
         {
+            //Gelen verinin,AuthDtoValidator daki kurallara uyup uymadığını kontrol et.
+            //Fluent Validation bu kontrol öncesinde modelstate i otomatik olarak doldurur.
+            if (!ModelState.IsValid)
+            {
+                //En az bir doğrulama hatası varsa ,işlemi devam ettirme.
+                //BadRequest(ModelState) ile bu hataları döndür.
+                return BadRequest(ModelState);
+            }
             // Gönderilen kullanıcı adının zaten alınıp alınmadığını kontrol et
             if (_userRepository.UserExists(authDto.Username)) 
             {
                 return BadRequest("Bu kullanıcı adı zaten alınmış.");
+            }
+            //2.Gelen kullanıcı adına göre hangi rolün atanacağı belirleniyor.
+            int roleIdToAssign;
+            //Admin olarak kullanılacak kullanıcı adlarını belirliyorum 
+            var adminUsernames = new List<string> { "admin", "feza", "feza1","feza2", "feza3","ahmed","ahmed1","ahmed2","ahmed3" };
+
+            
+            if(adminUsernames.Contains(authDto.Username.ToLower()))
+            {
+                //Eğer gelen kullanıcı adı listede varsa 
+                //Ona Admin rolünün Id sini ata yani 1 i ata.
+                roleIdToAssign = 1; 
+            }
+            else
+            {
+                //Eğer gelen kullanıcı adı listede yoksa 
+                //Ona User rolünün Id sini ata yani 2 yi ata.
+                roleIdToAssign = 2; 
             }
 
             // Güvenli şifreleme için hash ve salt oluştur.
@@ -42,7 +68,7 @@ namespace Enoca.Controllers
                 Username = authDto.Username, // "Username" olarak düzeltildi
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-                RoleId = 1 // Varsayılan rol
+                RoleId = roleIdToAssign
             };
 
             _userRepository.RegisterUser(userToCreate);
@@ -55,6 +81,14 @@ namespace Enoca.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] AuthDto authDto)
         {
+            //Gelen verinin,AuthDtoValidator daki kurallara uyup uymadığını kontrol et.
+            //Fluent Validation bu kontrol öncesinde modelstate i otomatik olarak doldurur.
+            if (!ModelState.IsValid)
+            {
+                //En az bir doğrulama hatası varsa ,işlemi devam ettirme.
+                //BadRequest(ModelState) ile bu hataları döndür.
+                return BadRequest(ModelState);
+            }
             // Kullanıcıyı veritabanından kullanıcı adına göre bul.
             var userFromRepo = _userRepository.GetUserByUsername(authDto.Username); 
 

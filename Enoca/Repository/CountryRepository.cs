@@ -45,5 +45,35 @@ namespace Enoca.Repository
             _context.Countries.Add(country);
             _context.SaveChanges();
         }
+
+        public bool CountryExistsByName(string Name)
+        {
+            return _context.Countries.Any(c => c.Name.ToLower().Trim() == Name.ToLower().Trim()); // Ülke adı var mı kontrol eder
+        }
+
+        public bool UpdateCountry(Country country)
+        {
+            //_context.Update() metodu entity fraemwork core da bir nesnenin durumunun güncellendi olarak işaretlemesini söyler.
+            _context.Update(country);
+
+            return Save();
+
+        }
+
+        public bool Save()
+        {
+            //_context.SaveChanges() metodu,etkilenen satır sayısını döndürür.
+            //Eğer en az bir satır eklendiyse (Yani değişiklik başarılıysa) true döner.
+            var saved = _context.SaveChanges();
+            return saved > 0;
+        }
+
+        public bool DeleteCountry(Country country)
+        {
+            //_context.Remove(), Entity Fraemwork e bu nesnenin durumunun 
+            //silindi olarak işaretlenmesini sağlar.
+            _context.Remove(country);
+            return Save();
+        }
     }
 }

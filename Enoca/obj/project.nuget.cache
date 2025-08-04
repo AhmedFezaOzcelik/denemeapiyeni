@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "UNi5dxpl44k=",
+  "dgSpecHash": "CAAGySr8HVs=",
   "success": true,
   "projectFilePath": "C:\\Users\\Feza\\Documents\\MyProjects\\Enoca - Kopya 2\\Enoca\\Enoca.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Feza\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Feza\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\Feza\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
+    "C:\\Users\\Feza\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.1\\fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
+    "C:\\Users\\Feza\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.11.0\\fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
     "C:\\Users\\Feza\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Feza\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.7\\microsoft.aspnetcore.authentication.jwtbearer.9.0.7.nupkg.sha512",
     "C:\\Users\\Feza\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.6\\microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",
